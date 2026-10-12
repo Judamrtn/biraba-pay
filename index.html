@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BIRABA Supporting Ticket</title>
+<meta name="description" content="Pay for your BIRABA Supporting Ticket with MoMo or Equity Bank.">
+<style>
+  :root {
+    --bg: #f6f5f2; --card: #ffffff; --text: #1a1a1a; --muted: #5f5f5f;
+    --line: #e4e2dc; --momo: #ffcb05; --momo-ink: #1a1a1a; --bank: #a32a29;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.4;
+  }
+  main { max-width: 440px; margin: 0 auto; padding: 32px 16px 48px; }
+  h1 { font-size: 1.7rem; margin: 0 0 4px; text-align: center; }
+  .sub { text-align: center; color: var(--muted); margin: 0 0 28px; }
+  section {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 16px; padding: 20px; margin-bottom: 16px;
+  }
+  h2 { font-size: 1rem; margin: 0 0 14px; text-transform: uppercase; letter-spacing: .04em; }
+  .momo h2 { color: #8a6d00; }
+  .bank h2 { color: var(--bank); }
+  .pay {
+    display: flex; justify-content: space-between; align-items: center;
+    width: 100%; padding: 18px 20px; margin-bottom: 10px;
+    background: var(--momo); color: var(--momo-ink); border-radius: 12px;
+    text-decoration: none; font-weight: 700; font-size: 1.15rem;
+  }
+  .pay span:last-child { font-weight: 500; font-size: .95rem; }
+  .pay:active { transform: scale(.98); }
+  .hint { font-size: .85rem; color: var(--muted); margin: 6px 0 0; }
+  .row { display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .row:last-of-type { border-bottom: 0; }
+  .label { font-size: .8rem; color: var(--muted); }
+  .value { font-weight: 600; word-break: break-all; }
+  .acc { font-size: 1.25rem; letter-spacing: .03em; }
+  button {
+    flex-shrink: 0; border: 1px solid var(--line); background: var(--bg); color: var(--text);
+    border-radius: 8px; padding: 8px 12px; font: inherit; font-size: .85rem; cursor: pointer;
+  }
+  code { background: var(--bg); padding: 2px 6px; border-radius: 6px; }
+  footer { text-align: center; font-size: .85rem; color: var(--muted); margin-top: 20px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>BIRABA Supporting Ticket</h1>
+  <p class="sub">Choose how you want to pay</p>
+
+  <section class="momo">
+    <h2>MTN MoMo</h2>
+    <a class="pay" href="tel:*182*8*1*648498*15000%23"><span>15,000 RWF</span><span>Pay now</span></a>
+    <a class="pay" href="tel:*182*8*1*648498*25000%23"><span>25,000 RWF</span><span>Pay now</span></a>
+    <p class="hint">Tap a button, press call, then enter your PIN.</p>
+    <div class="row">
+      <div>
+        <div class="label">If the button doesn't open your dialer, dial</div>
+        <div class="value"><code>*182*8*1*648498#</code></div>
+      </div>
+      <button data-copy="*182*8*1*648498#">Copy</button>
+    </div>
+  </section>
+
+  <section class="bank">
+    <h2>Equity Bank</h2>
+    <div class="row">
+      <div><div class="label">Account name</div><div class="value">Mupenzi Innocent</div></div>
+    </div>
+    <div class="row">
+      <div><div class="label">Account number</div><div class="value acc">40007101007570</div></div>
+      <button data-copy="40007101007570">Copy</button>
+    </div>
+    <div class="row">
+      <div><div class="label">Reference</div><div class="value">BIRABA Ticket + your name</div></div>
+    </div>
+  </section>
+
+  <footer>MoMo Pay code 648498</footer>
+</main>
+<script>
+  document.querySelectorAll("button[data-copy]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var text = b.getAttribute("data-copy");
+      var done = function () { b.textContent = "Copied"; setTimeout(function () { b.textContent = "Copy"; }, 1500); };
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(done, function () { prompt("Copy:", text); });
+      } else { prompt("Copy:", text); }
+    });
+  });
+</script>
+</body>
+</html>
